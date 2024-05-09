@@ -79,7 +79,12 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/tailwindcss/base.css",
+              "node_modules/tailwindcss/components.css",
+              "node_modules/tailwindcss/utilities.css"
+            ],
             "scripts": []
           }
         }
