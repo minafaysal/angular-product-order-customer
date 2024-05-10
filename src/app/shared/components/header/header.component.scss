@@ -27,6 +27,12 @@ div.header {
       li {
         cursor: pointer;
         padding-inline: 15px;
+
+        &.active {
+          font-weight: semibold;
+          color: blue;
+          transition: 0.3s;
+        }
       }
     }
   }
