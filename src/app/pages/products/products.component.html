@@ -1,1 +1,30 @@
-<p>products works!</p>
+<section class="bg-white">
+  <div class="container px-6 py-10 mx-auto">
+    <h1 class="w-full text-center text-3xl font-bold mb-8">Products</h1>
+    <div
+      class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3"
+    >
+      <div class="w-full" *ngFor="let product of products">
+        <div
+          class="rounded overflow-hidden shadow-lg bg-white"
+          [ngClass]="{ 'bg-red-100': product.AvailablePieces < 10 }"
+        >
+          <img
+            class="w-full h-48 object-cover"
+            [src]="product.ProductImg"
+            [alt]="product.ProductName + ' Image'"
+          />
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{ product.ProductName }}</div>
+            <p class="text-gray-700 text-base mb-2">
+              Price: ${{ product.ProductPrice }}
+            </p>
+            <p class="text-gray-700 text-base mb-2">
+              Available Pieces: {{ product.AvailablePieces }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
