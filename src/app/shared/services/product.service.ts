@@ -9,11 +9,13 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class ProductService {
-  private productsUrl = 'assets/data/porducts.json'; 
+  private productsUrl = 'assets/data/porducts.json';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl);
+    return this.http
+      .get<Product[]>(this.productsUrl)
   }
 }
