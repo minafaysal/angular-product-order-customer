@@ -1,12 +1,45 @@
-<div class="header">
-  <span class="container">
-    <img routerLink="" src="../../../assets/img/logo.png" alt="company-logo" />
-    <ul>
-      <li routerLink="/products" routerLinkActive="active">Products</li>
-      <li routerLink="/orders" routerLinkActive="active">Orders</li>
-      <li routerLink="/orderdetails" routerLinkActive="active">
-        Order Details
-      </li>
-    </ul>
-  </span>
-</div>
+<header class="bg-gray-800">
+  <nav class="container mx-auto px-6 py-3">
+    <div class="flex items-center justify-between">
+      <div class="text-white font-bold text-xl">
+        <img
+          routerLink=""
+          src="../../../assets/img/logo.png"
+          alt="company-logo"
+          class="w-14 h-14 rounded-md cursor-pointer md:block"
+        />
+      </div>
+      <div>
+        <ul class="flex items-center space-x-8">
+          <li>
+            <a
+              [routerLinkActive]="['text-blue-500']"
+              class="text-white"
+              routerLink="/products"
+              routerLinkActive="active"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLinkActive]="['text-blue-500']"
+              class="text-white"
+              routerLink="/orders"
+              routerLinkActive="active"
+              >Orders</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLinkActive]="['text-blue-500']"
+              class="text-white"
+              routerLink="/orderdetails"
+              routerLinkActive="active"
+              >Order Details</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
