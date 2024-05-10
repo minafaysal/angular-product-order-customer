@@ -32,12 +32,14 @@ This Angular application is designed to manage products, orders, and customers i
 - TypeScript: 5.0.0
 - RxJS: 7.8.0
 - Zone.js: 0.14.5
-- SCSS for styling
+- Tailwind CSS: 3.4.3 (for styling)
+- Font Awesome Free: 6.5.1
+- ngx-toastr: 18.0.0
 
 ## Folder Structure
 
-- `src/app/components`: Contains Angular components for different pages (Products, Orders, Order Details).
-- `src/app/services`: Includes services for HTTP requests and data handling.
+- `src/app/pages`: Contains Angular components for different pages (Products, Orders, Order Details).
+- `src/app/shared/services`: Includes services for HTTP requests and data handling.
 - `src/assets`: Stores static assets such as images and JSON data files.
 - `src/styles.scss`: Global SCSS styles for the application.
 
