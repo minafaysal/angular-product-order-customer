@@ -1,1 +1,46 @@
-<p>orders works!</p>
+<section class="bg-white">
+  <div class="container px-6 py-10 mx-auto">
+    <h1 class="w-full text-center text-3xl font-bold mb-8">Orders</h1>
+    <div
+      class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3"
+    >
+      <div *ngFor="let order of visibleOrders" class="w-full">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Order #{{ order.OrderId }}</h3>
+            <p class="text-gray-600 mb-2">
+              Order Date: {{ order.OrderDate | dateFormat }}
+            </p>
+            <p class="text-gray-600 mb-2">User ID: {{ order.UserId }}</p>
+            <div class="mt-2 h-32">
+              <h4 class="text-md font-semibold mb-1">Products</h4>
+              <ul>
+                <li *ngFor="let item of order.Products">
+                  Product ID: {{ item.ProductId }} - Quantity:
+                  {{ item.Quantity }}
+                </li>
+              </ul>
+              <h4 class="text-md font-semibold mb-1 mt-2">
+                Total Price : ${{ order.TotalPrice }}
+              </h4>
+            </div>
+            <p class="text-gray-600 mt-2">
+              Payment Method: {{ order.PaymentType }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flex justify-center mb-8">
+  <button
+    (click)="loadMore()"
+    class="text-red hover:before:bg-redborder-red-500 relative h-[50px] w-40 overflow-hidden border border-red-500 bg-white px-3 text-red-500 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full"
+  >
+    <span class="relative z-10"
+      ><i class="fas fa-plus text-lg leading-none"></i> See More ...</span
+    >
+  </button>
+</div>
