@@ -9,7 +9,7 @@
           <div class="p-4">
             <h3 class="text-lg font-bold mb-2">Order #{{ order.OrderId }}</h3>
             <p class="text-gray-600 mb-2">
-              Order Date: {{ order.OrderDate }}
+              Order Date: {{ order.OrderDate | dateFormat }}
             </p>
             <p class="text-gray-600 mb-2">User ID: {{ order.UserId }}</p>
             <div class="mt-2 h-32">

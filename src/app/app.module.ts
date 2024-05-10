@@ -10,10 +10,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
+import { DateFormatPipe } from './shared/pipes/date-format.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ProductsComponent, OrdersComponent, OrderDetailsComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ProductsComponent,
+    OrdersComponent,
+    OrderDetailsComponent,
+    DateFormatPipe,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
