@@ -1,0 +1,71 @@
+<div class="bg-white rounded shadow-2xl p-8">
+  <h1 class="block w-full text-center text-gray-800 text-2xl font-bold">
+    Add Order Details
+  </h1>
+  
+      <form [formGroup]="orderForm" (submit)="onSubmit()">
+    <div class="flex flex-col mb-2">
+      <label class="mb-2 text-md text-gray-900" for="Name">
+        Customer Name</label
+      >
+      <input
+        class="border rounded-md py-1 px-1 text-grey-800"
+        type="text"
+        formControlName="Name"
+        id="Name"
+      />
+    </div>
+    <div class="flex flex-col mb-2">
+      <label class="mb-2 text-md text-gray-900" for="last_name">Email</label>
+      <input
+        class="border rounded-md py-1 px-1 text-grey-800"
+        type="text"
+        formControlName="email"
+        id="last_name"
+      />
+    </div>
+    <div class="flex flex-col mb-2">
+      <label class="mb-2 text-md text-gray-900" for="Phone">Phone</label>
+      <input
+        class="border rounded-md py-1 px-1 text-grey-800"
+        type="text"
+        formControlName="Phone"
+        id="Phone"
+      />
+    </div>
+    <div class="flex flex-col mb-2">
+      <label class="mb-2 text-md text-gray-900" for="Address">Address</label>
+      <input
+        class="border rounded-md py-1 px-1 text-grey-800"
+        type="text"
+        formControlName="Address"
+        id="Address"
+      />
+    </div>
+    <div class="flex flex-col mb-2">
+      <label class="mb-2" for="PaymentType">Payment Method:</label>
+      <select
+        class="mb-2 w-1/2"
+        id="PaymentType"
+        formControlName="PaymentType"
+        required
+      >
+        <option value="">Select Payment Method</option>
+        <option value="online">Online</option>
+        <option value="cash">Cash</option>
+      </select>
+    </div>
+    <button
+      [disabled]="orderForm.invalid"
+      class="block bg-blue-500 hover:bg-blue-700 text-white text-md mx-auto p-2 rounded"
+      type="submit"
+       [disabled]="loading"
+          [class.spinner]="loading"
+    >
+      Submit Order
+    </button>
+  </form>
+</div>
+
+
+

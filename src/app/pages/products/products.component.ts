@@ -5,7 +5,7 @@ import { ComponentBase } from '../../shared/base/common.base';
 import { takeUntil } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
-import { AddOrderPopupComponent } from '../../shared/components/add-order/add-order-popup/add-order-popup.component';
+import { AddOrderPopupComponent } from '../add-order-popup/add-order-popup.component';
 
 @Component({
   selector: 'app-products',

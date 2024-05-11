@@ -11,8 +11,9 @@ import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AddOrderPopupComponent } from './pages/add-order-popup/add-order-popup.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     OrdersComponent,
     OrderDetailsComponent,
     DateFormatPipe,
+    AddOrderPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ToastrModule.forRoot({}),
     FormsModule,
     MatDialogModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
