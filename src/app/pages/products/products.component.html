@@ -1,6 +1,14 @@
 <section class="bg-white">
   <div class="container px-6 py-10 mx-auto">
     <h1 class="w-full text-center text-3xl font-bold mb-8">Products</h1>
+    <div class="d-flex justify-end">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 max-w-fit text-white py-2 px-4 w-full mt-2 rounded"
+        (click)="openAddOrderPopup()"
+      >
+        Create New Order
+      </button>
+    </div>
     <div
       class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3"
     >
@@ -31,10 +39,16 @@
               [(ngModel)]="quantityValues[product.ProductId]"
               class="w-full py-2 rounded-lg border border-gray-200"
               min="1"
+              placeholder="Update Product Quantity"
             />
             <button
               class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 w-full mt-2 rounded"
-              (click)="editProductQuantity(product.ProductId, quantityValues[product.ProductId])"
+              (click)="
+                editProductQuantity(
+                  product.ProductId,
+                  quantityValues[product.ProductId]
+                )
+              "
             >
               Update Quantity
             </button>

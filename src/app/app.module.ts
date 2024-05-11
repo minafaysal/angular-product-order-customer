@@ -12,6 +12,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({}),
-    FormsModule
+    FormsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

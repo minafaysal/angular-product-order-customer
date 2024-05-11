@@ -4,6 +4,8 @@ import { ProductService } from '../../shared/services/product.service';
 import { ComponentBase } from '../../shared/base/common.base';
 import { takeUntil } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { AddOrderPopupComponent } from '../../shared/components/add-order/add-order-popup/add-order-popup.component';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +19,8 @@ export class ProductsComponent extends ComponentBase implements OnInit {
   constructor(
     private productService: ProductService,
     private readonly toastr: ToastrService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private dialog: MatDialog
   ) {
     super();
   }
@@ -73,5 +76,17 @@ export class ProductsComponent extends ComponentBase implements OnInit {
     } else {
       this.toastr.warning(' Product not found!');
     }
+  }
+
+  // Method to open add order popup
+  openAddOrderPopup(): void {
+    const dialogRef = this.dialog.open(AddOrderPopupComponent, {
+      width: '500px',
+      data: this.products,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }
