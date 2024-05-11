@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { AddOrderPopupComponent } from '../add-order-popup/add-order-popup.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-products',
@@ -22,12 +23,14 @@ export class ProductsComponent extends ComponentBase implements OnInit {
     private productService: ProductService,
     private readonly toastr: ToastrService,
     private cdr: ChangeDetectorRef,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private spinner: NgxSpinnerService
   ) {
     super();
   }
 
   ngOnInit(): void {
+     this.spinner.show();
     // Call method to fetch products when component initializes
     this.getProducts();
   }
@@ -39,6 +42,7 @@ export class ProductsComponent extends ComponentBase implements OnInit {
       .subscribe((products) => {
         this.products = products;
       });
+      this.spinner.hide();
   }
 
   // TrackBy function to improve rendering performance

@@ -14,7 +14,7 @@ import { DateFormatPipe } from './shared/pipes/date-format.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddOrderPopupComponent } from './pages/add-order-popup/add-order-popup.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { AddOrderPopupComponent } from './pages/add-order-popup/add-order-popup.
     OrdersComponent,
     OrderDetailsComponent,
     DateFormatPipe,
-    AddOrderPopupComponent
+    AddOrderPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +35,7 @@ import { AddOrderPopupComponent } from './pages/add-order-popup/add-order-popup.
     FormsModule,
     MatDialogModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

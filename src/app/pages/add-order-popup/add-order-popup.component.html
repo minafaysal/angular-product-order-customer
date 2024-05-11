@@ -2,8 +2,8 @@
   <h1 class="block w-full text-center text-gray-800 text-2xl font-bold">
     Add Order Details
   </h1>
-  
-      <form [formGroup]="orderForm" (submit)="onSubmit()">
+
+  <form [formGroup]="orderForm" (submit)="onSubmit()">
     <div class="flex flex-col mb-2">
       <label class="mb-2 text-md text-gray-900" for="Name">
         Customer Name</label
@@ -16,12 +16,12 @@
       />
     </div>
     <div class="flex flex-col mb-2">
-      <label class="mb-2 text-md text-gray-900" for="last_name">Email</label>
+      <label class="mb-2 text-md text-gray-900" for="Email">Email</label>
       <input
         class="border rounded-md py-1 px-1 text-grey-800"
         type="text"
-        formControlName="email"
-        id="last_name"
+        formControlName="Email"
+        id="Email"
       />
     </div>
     <div class="flex flex-col mb-2">
@@ -59,13 +59,10 @@
       [disabled]="orderForm.invalid"
       class="block bg-blue-500 hover:bg-blue-700 text-white text-md mx-auto p-2 rounded"
       type="submit"
-       [disabled]="loading"
-          [class.spinner]="loading"
+      [disabled]="loading"
+      [class.spinner]="loading"
     >
       Submit Order
     </button>
   </form>
 </div>
-
-
-

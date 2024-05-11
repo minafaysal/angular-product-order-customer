@@ -7,6 +7,7 @@ import { Customer } from '../../shared/models/user.model';
 import { CustomerService } from '../../shared/services/customer.service';
 import { Product } from '../../shared/models/product.model';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-order-details',
@@ -22,12 +23,14 @@ export class OrderDetailsComponent extends ComponentBase implements OnInit {
   constructor(
     private productService: ProductService,
     private readonly orderService: OrdersService,
-    private readonly customerService: CustomerService
+    private readonly customerService: CustomerService,
+    private spinner: NgxSpinnerService
   ) {
     super();
   }
 
   ngOnInit(): void {
+     this.spinner.show();
     // Call method to fetch selected order details
     this.getSelectedOrder();
   }
@@ -59,6 +62,7 @@ export class OrderDetailsComponent extends ComponentBase implements OnInit {
         });
       this.subscriptions.push(productsSubscription);
     }
+    this.spinner.hide();
   }
 
   // Unsubscribe from all subscriptions in the subscriptions array
