@@ -27,6 +27,12 @@
             <p class="text-gray-600 mt-2">
               Payment Method: {{ order.PaymentType }}
             </p>
+            <button
+             (click)="viewOrderDetails(order)"
+              class="bg-red hover:bg-redborder-red-500 hover:underline text-blue-700 border-blue-700 font-bold py-2 rounded"
+            >
+              View Details
+            </button>
           </div>
         </div>
       </div>

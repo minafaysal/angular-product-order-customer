@@ -4,6 +4,7 @@ import { Order } from '../../shared/models/order.model';
 import { OrdersService } from '../../shared/services/order.service';
 import { takeUntil } from 'rxjs';
 import { ProductService } from '../../shared/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -17,7 +18,8 @@ export class OrdersComponent extends ComponentBase implements OnInit {
 
   constructor(
     private ordersService: OrdersService,
-    private productService: ProductService
+    private productService: ProductService,
+    private readonly router: Router
   ) {
     super();
   }
@@ -70,5 +72,11 @@ export class OrdersComponent extends ComponentBase implements OnInit {
   // Track orders by OrderId for optimization in ngFor
   trackByOrderId(index: number, order: Order): number {
     return order.OrderId;
+  }
+
+  // Function to handle viewing order details
+  viewOrderDetails(order: Order): void {
+    this.ordersService.setSelectedOrder(order);
+    this.router.navigate(['/orderdetails', order.OrderId]);
   }
 }

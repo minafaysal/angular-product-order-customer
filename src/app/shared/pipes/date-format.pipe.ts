@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'dateFormat',
 })
 export class DateFormatPipe implements PipeTransform {
-  transform(value: string): string {
-    if (!value) return ''; // Handle empty or null values
+  transform(value: string | undefined): string {
+    if (!value || value.trim() === '') return ''; // Handle empty or null values
 
     const dateParts = value.split(' '); // Split the date string into parts
     const month = dateParts[1];
