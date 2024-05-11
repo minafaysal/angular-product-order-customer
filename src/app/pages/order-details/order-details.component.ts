@@ -6,6 +6,7 @@ import { Order } from '../../shared/models/order.model';
 import { Customer } from '../../shared/models/user.model';
 import { CustomerService } from '../../shared/services/customer.service';
 import { Product } from '../../shared/models/product.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order-details',
@@ -17,6 +18,7 @@ export class OrderDetailsComponent extends ComponentBase implements OnInit {
   selectedOrder!: Order | null;
   customer!: Customer | undefined;
   products!: Product[];
+  private subscriptions: Subscription[] = [];
   constructor(
     private productService: ProductService,
     private readonly orderService: OrdersService,
@@ -33,23 +35,33 @@ export class OrderDetailsComponent extends ComponentBase implements OnInit {
   // Fetch order details and customer details based on orderId
   getSelectedOrder() {
     // Subscribe to selectedOrder$ to get the selected order
-    this.orderService.selectedOrder$.subscribe((order) => {
-      this.selectedOrder = order;
-    });
+    const orderSubscription = this.orderService.selectedOrder$.subscribe(
+      (order) => {
+        this.selectedOrder = order;
+      }
+    );
+    this.subscriptions.push(orderSubscription);
+
     if (this.selectedOrder) {
       // Fetch customer details based on the order's UserId
-      this.customerService
+      const customerSubscription = this.customerService
         .getCustomerDetails(this.selectedOrder.UserId)
         .subscribe((customer) => {
           this.customer = customer;
         });
+      this.subscriptions.push(customerSubscription);
 
       // Fetch products related to the selected order
-      this.productService
+      const productsSubscription = this.productService
         .getProductsForOrder(this.selectedOrder.Products)
         .subscribe((products) => {
           this.products = products;
         });
+      this.subscriptions.push(productsSubscription);
     }
+  }
+
+  override ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
