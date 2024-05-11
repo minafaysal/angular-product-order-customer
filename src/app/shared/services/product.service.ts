@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map, switchMap } from 'rxjs';
 import { Product } from '../models/product.model';
-import { Order } from '../models/order.model';
-
 
 const httpOptions = {
   headers: new HttpHeaders({

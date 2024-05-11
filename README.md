@@ -7,6 +7,7 @@ This Angular application is designed to manage products, orders, and customers i
 - **Products Page:** Displays a list of available products. Allows editing products with low quantities.
 - **Orders Page:** Shows all orders in the system, including total price and payment method.
 - **Order Details Page:** Provides detailed information about an order, including customer details, product details, and quantities.
+- **Add Order Popup:** Opens a popup for adding new orders, including customer information and payment method selection.
 
 ## Installation
 
@@ -35,6 +36,7 @@ This Angular application is designed to manage products, orders, and customers i
 - Tailwind CSS: 3.4.3 (for styling)
 - Font Awesome Free: 6.5.1
 - ngx-toastr: 18.0.0
+- ngx-spinner: 16.0.2
 
 ## Folder Structure
 

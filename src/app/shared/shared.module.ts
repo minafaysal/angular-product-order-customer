@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/not-found/not-found/not-found.component';
 
 @NgModule({
-  declarations: [
-    NotFoundComponent
-  ],
+  declarations: [NotFoundComponent],
   imports: [CommonModule],
 })
 export class SharedModule {}

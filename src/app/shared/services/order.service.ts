@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Order } from '../models/order.model';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +25,9 @@ export class OrdersService {
 
   setSelectedOrder(order: Order): void {
     this.selectedOrderSubject.next(order);
+  }
+
+  addOrder(order: Order): Observable<Order> {
+    return this.http.post<Order>(this.ordersUrl, order ,httpOptions);
   }
 }

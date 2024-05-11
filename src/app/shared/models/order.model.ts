@@ -6,5 +6,5 @@ export interface Order {
   UserId: string;
   Products: Product[];
   PaymentType: string;
-  TotalPrice: number;
+  TotalPrice?: number;
 }

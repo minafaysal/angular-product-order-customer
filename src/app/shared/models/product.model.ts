@@ -6,3 +6,8 @@ export interface Product {
   ProductImg: string;
   Quantity?: number;
 }
+
+export interface orderProducts {
+  ProductId: number;
+  Quantity: number;
+}

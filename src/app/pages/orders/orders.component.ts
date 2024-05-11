@@ -5,6 +5,7 @@ import { OrdersService } from '../../shared/services/order.service';
 import { takeUntil } from 'rxjs';
 import { ProductService } from '../../shared/services/product.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-orders',
@@ -19,12 +20,14 @@ export class OrdersComponent extends ComponentBase implements OnInit {
   constructor(
     private ordersService: OrdersService,
     private productService: ProductService,
-    private readonly router: Router
+    private readonly router: Router,
+    private spinner: NgxSpinnerService
   ) {
     super();
   }
 
   ngOnInit(): void {
+     this.spinner.show();
     // Fetch orders when the component initializes
     this.getOrders();
   }
@@ -54,6 +57,7 @@ export class OrdersComponent extends ComponentBase implements OnInit {
           });
       }
     }
+    this.spinner.hide();
   }
 
   // Load the initial set of visible orders based on itemsPerPage
