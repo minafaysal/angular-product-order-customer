@@ -4,9 +4,16 @@
     <div class="d-flex justify-end">
       <button
         class="bg-blue-500 hover:bg-blue-700 max-w-fit text-white py-2 px-4 w-full mt-2 rounded"
-        (click)="openAddOrderPopup()"
+        (click)="createNewOrder()"
       >
         Create New Order
+      </button>
+      <button
+        *ngIf="selectedProducts?.length"
+        class="bg-blue-500 hover:bg-blue-700 max-w-fit mx-7 text-white py-2 px-4 w-full mt-2 rounded"
+        (click)="openAddOrderPopup()"
+      >
+        Add Customer Details
       </button>
     </div>
     <div
@@ -51,6 +58,20 @@
               "
             >
               Update Quantity
+            </button>
+            <button
+              *ngIf="createOrder"
+              class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 w-full mt-2 rounded"
+              [ngClass]="{
+                'bg-red-500 hover:bg-red-700': isProductAdded(product.ProductId)
+              }"
+              (click)="addOrRemoveProduct(product)"
+            >
+              {{
+                isProductAdded(product.ProductId)
+                  ? "Remove from Order"
+                  : "Add to Order"
+              }}
             </button>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Product } from '../../shared/models/product.model';
+import { Product, orderProducts } from '../../shared/models/product.model';
 import { ProductService } from '../../shared/services/product.service';
 import { ComponentBase } from '../../shared/base/common.base';
 import { takeUntil } from 'rxjs';
@@ -15,6 +15,8 @@ import { AddOrderPopupComponent } from '../../shared/components/add-order/add-or
 export class ProductsComponent extends ComponentBase implements OnInit {
   products: Product[] = [];
   quantityValues: { [key: number]: number } = {};
+  selectedProducts: orderProducts[] = [];
+  createOrder: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -82,11 +84,41 @@ export class ProductsComponent extends ComponentBase implements OnInit {
   openAddOrderPopup(): void {
     const dialogRef = this.dialog.open(AddOrderPopupComponent, {
       width: '500px',
-      data: this.products,
+      data: this.selectedProducts,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
+  }
+
+  createNewOrder(): void {
+    this.createOrder = true;
+  }
+
+  // Method to add or remove product to order
+  addOrRemoveProduct(product: any) {
+    const productIndex = this.selectedProducts.findIndex(
+      (p) => p.ProductId === product.ProductId
+    );
+
+    if (productIndex !== -1) {
+      // Product already exists in the order, remove it
+      this.selectedProducts.splice(productIndex, 1);
+      this.toastr.error('Product removed from order Successfull!');
+    } else {
+      // Product doesn't exist, add it to the order
+      this.selectedProducts.push({
+        ProductId: product.ProductId,
+        Quantity: product.AvailablePieces,
+      });
+      this.toastr.success('Product added to order Successfull!');
+    }
+  }
+  // Method to check if product is added to order
+  isProductAdded(productId: number): boolean {
+    return this.selectedProducts.some(
+      (product) => product.ProductId === productId
+    );
   }
 }
