@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, map, switchMap } from 'rxjs';
 import { Product } from '../models/product.model';
 import { Order } from '../models/order.model';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
   providedIn: 'root',
@@ -38,5 +45,20 @@ export class ProductService {
     );
   }
 
-  
+  updateProductQuantity(
+    productId: number,
+    updatedProduct: Product
+  ): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsUrl).pipe(
+      map((products) => {
+        const updatedProducts = products.map((product) => {
+          if (product.ProductId === productId) {
+            return { ...product, ...updatedProduct };
+          }
+          return product;
+        });
+        return updatedProducts;
+      })
+    );
+  }
 }

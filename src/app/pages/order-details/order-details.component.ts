@@ -61,6 +61,7 @@ export class OrderDetailsComponent extends ComponentBase implements OnInit {
     }
   }
 
+  // Unsubscribe from all subscriptions in the subscriptions array
   override ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
