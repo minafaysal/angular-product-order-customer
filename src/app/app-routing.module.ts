@@ -8,7 +8,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found/not-f
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'orderdetails', component: OrderDetailsComponent },
+  { path: 'orderdetails/:orderId', component: OrderDetailsComponent },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
